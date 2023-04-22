@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const db = require('@cyclic.sh/dynamodb')
+const animals = db.collection("animals")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -69,4 +70,15 @@ app.use('*', (req, res) => {
 const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`index.js listening on ${port}`)
+  
+  // create an item in collection with key "leo"
+  let leo = await animals.set("leo", {
+      type: "cat",
+      color: "orange"
+  })
+
+  // get an item at key "leo" from collection animals
+  let item = await animals.get("leo")
+  console.log(item)
+
 })
