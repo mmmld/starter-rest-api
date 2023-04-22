@@ -4,14 +4,14 @@ const db = require('@cyclic.sh/dynamodb')
 const animals = db.collection("animals")
 
 // create an item in collection with key "leo"
-let leo = await animals.set("leo", {
-    type: "cat",
-    color: "orange"
-})
+// let leo = await animals.set("leo", {
+//     type: "cat",
+//     color: "orange"
+// })
 
-// get an item at key "leo" from collection animals
-let item = await animals.get("leo")
-console.log(item)
+// // get an item at key "leo" from collection animals
+// let item = await animals.get("leo")
+// console.log(item)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
